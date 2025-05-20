@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class SessionsController < ApplicationController
       def create
         user = User.find_by(email: params[:email])
-        
+
         if user&.authenticate(params[:password])
           render json: { message: "ログイン成功", user: user }, status: :ok
         else
