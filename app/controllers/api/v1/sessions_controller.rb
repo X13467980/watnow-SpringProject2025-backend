@@ -3,7 +3,7 @@
 module Api
   module V1
     class SessionsController < ApplicationController
-        # ACでSCを作ってますよみたいな
+      # ACでSCを作ってますよみたいな
       def create
         user = User.find_by(email: params[:email])
 
