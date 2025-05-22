@@ -10,6 +10,10 @@ module Api
           render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
       end
+      def index
+        users = User.select(:id, :name, :email, :created_at)
+        render json: users
+      end
 
       private
 

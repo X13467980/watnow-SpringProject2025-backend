@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       delete "logout", to: "sessions#destroy"
 
       post "signup", to: "users#create"
+
+      resources :users, only: [:index, :create]
     end
   end
 end
