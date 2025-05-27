@@ -21,8 +21,10 @@ module Api
         if user
           user.destroy
           render json: { message: "ユーザーを削除しました" }, status: :ok
-        else
+        elsif user == nil
           render json: { error: "ユーザーが見つかりません" }, status: :not_found
+        else
+          render json: { error: "ユーザーの削除に失敗しました" }, status: :unprocessable_entity
         end
       end
 
