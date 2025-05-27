@@ -1,4 +1,3 @@
-# app/controllers/api/v1/users_controller.rb
 module Api
   module V1
     class UsersController < ApplicationController
@@ -17,20 +16,22 @@ module Api
         render json: users
       end
 
+      def destroy
+        user = User.find_by(id: params[:id])
+        if user
+          user.destroy
+          render json: { message: "ユーザーを削除しました" }, status: :ok
+        else
+          render json: { error: "ユーザーが見つかりません" }, status: :not_found
+        end
+      end
+
       private
 
       def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
       end
 
-      def destroy
-        user = User.find_by(id: params[:id])
-        if user
-            user.destroy
-            render json: { message: "ユーザーを削除しました" }, status: :ok
-        else
-            render json: { error: "ユーザーが見つかりません" }, status: :not_found
-        end
     end
   end
 end
