@@ -2,6 +2,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
+      
       def create
         user = User.new(user_params)
         if user.save
@@ -10,6 +11,7 @@ module Api
           render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
       end
+
       def index
         users = User.select(:id, :name, :email, :created_at)
         render json: users
@@ -20,6 +22,15 @@ module Api
       def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
       end
+
+      def destroy
+        user = User.find_by(id: params[:id])
+        if user
+            user.destroy
+            render json: { message: "ユーザーを削除しました" }, status: :ok
+        else
+            render json: { error: "ユーザーが見つかりません" }, status: :not_found
+        end
     end
   end
 end
