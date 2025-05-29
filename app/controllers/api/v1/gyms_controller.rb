@@ -4,7 +4,7 @@ module Api
       def create
         gym = Gym.new(gym_params)
         if gym.save
-          render json: { message: 'Gym created successfully', gym: gym }, status: :created
+          render json: { message: "Gym created successfully", gym: gym }, status: :created
         else
           render json: { errors: gym.errors.full_messages }, status: :unprocessable_entity
         end
