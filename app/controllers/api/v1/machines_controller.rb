@@ -15,6 +15,7 @@ module Api
       def index
         machines = Machine.all
         render json: machines
+        # 全マシン情報を取得
       end
 
       private
