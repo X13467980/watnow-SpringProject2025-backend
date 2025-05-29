@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       post "signup", to: "users#create"
 
       resources :users, only: [ :index, :create, :destroy ]
+      resources :machines, only: [ :index, :create, :new ]
     end
   end
 end
