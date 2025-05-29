@@ -13,6 +13,7 @@ module Api
       def index
         gyms = Gym.all
         render json: gyms
+        # 全ジム情報を取得
       end
 
       private
