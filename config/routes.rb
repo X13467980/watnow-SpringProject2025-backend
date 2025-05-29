@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
       resources :users, only: [ :index, :create, :destroy ]
       resources :machines, only: [ :index, :create, :new ]
+      resources :gyms, only: [:create, :index]
     end
   end
 end
