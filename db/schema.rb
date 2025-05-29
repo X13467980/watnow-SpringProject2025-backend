@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_29_083029) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_29_083301) do
+  create_table "gym_machines", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "gym_id", null: false
+    t.bigint "machine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gym_id"], name: "index_gym_machines_on_gym_id"
+    t.index ["machine_id"], name: "index_gym_machines_on_machine_id"
+  end
+
   create_table "gyms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "location"
@@ -35,4 +44,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_29_083029) do
     t.float "height"
     t.float "weight"
   end
+
+  add_foreign_key "gym_machines", "gyms"
+  add_foreign_key "gym_machines", "machines"
 end
