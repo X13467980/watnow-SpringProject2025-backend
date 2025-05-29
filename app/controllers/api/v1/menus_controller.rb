@@ -4,7 +4,7 @@ module Api
       def create
         menu = Menu.new(menu_params)
         if menu.save
-          render json: { message: 'メニューの作成に成功しました', menu: menu }, status: :created
+          render json: { message: "メニューの作成に成功しました", menu: menu }, status: :created
         else
           render json: { errors: menu.errors.full_messages }, status: :unprocessable_entity
         end
@@ -12,7 +12,7 @@ module Api
 
       def index
         menus = Menu.includes(:machine)
-        render json: menus.as_json(include: { machine: { only: [:id, :name] } })
+        render json: menus.as_json(include: { machine: { only: [ :id, :name ] } })
       end
 
       private
