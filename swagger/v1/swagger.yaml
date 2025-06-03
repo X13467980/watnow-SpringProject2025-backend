@@ -4,7 +4,7 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/v1/users":
+  "/users":
     get:
       summary: ユーザー一覧を取得
       tags:
@@ -47,7 +47,7 @@ paths:
                   - password
               required:
               - user
-  "/api/v1/users/{id}":
+  "/users/{id}":
     delete:
       summary: ユーザー削除
       tags:
