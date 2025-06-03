@@ -26,12 +26,6 @@ RSpec.configure do |config|
         {
           url: 'http://localhost:3000/api/v1',
           description: 'Local development server'
-          variables: {
-            {
-              url: 'http://localhost:3000/api/v1',
-              description: 'Local development server'
-            }
-          }
         }
       ]
     }
