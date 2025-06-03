@@ -23,10 +23,10 @@ RSpec.describe 'Users API', type: :request do
               email: { type: :string },
               password: { type: :string }
             },
-            required: ['name', 'email', 'password']
+            required: [ 'name', 'email', 'password' ]
           }
         },
-        required: ['user']
+        required: [ 'user' ]
       }
 
       response '201', 'ok' do
