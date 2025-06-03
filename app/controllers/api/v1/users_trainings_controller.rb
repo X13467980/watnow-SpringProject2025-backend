@@ -4,7 +4,7 @@ module Api
       def create
         training = UsersTraining.new(users_training_params)
         if training.save
-          render json: { message: 'Training record created successfully', training: training }, status: :created
+          render json: { message: '記録の作成に成功しました', training: training }, status: :created
         else
           render json: { errors: training.errors.full_messages }, status: :unprocessable_entity
         end
