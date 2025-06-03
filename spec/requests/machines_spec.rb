@@ -24,10 +24,10 @@ RSpec.describe 'Machines API', type: :request do
               name: { type: :string },
               model: { type: :string }
             },
-            required: ['name', 'model']
+            required: [ 'name', 'model' ]
           }
         },
-        required: ['machine']
+        required: [ 'machine' ]
       }
 
       response '201', 'created' do

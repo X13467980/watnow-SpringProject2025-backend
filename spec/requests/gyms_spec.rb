@@ -25,10 +25,10 @@ RSpec.describe 'Gyms API', type: :request do
               location: { type: :string },
               url: { type: :string }
             },
-            required: ['name']
+            required: [ 'name' ]
           }
         },
-        required: ['gym']
+        required: [ 'gym' ]
       }
 
       response '201', '作成成功' do
