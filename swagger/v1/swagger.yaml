@@ -4,6 +4,61 @@ info:
   title: API V1
   version: v1
 paths:
+  "/gyms":
+    get:
+      summary: ジム一覧を取得
+      tags:
+      - Gyms
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: ジムを登録
+      tags:
+      - Gyms
+      parameters: []
+      responses:
+        '201':
+          description: 作成成功
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                gym:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    location:
+                      type: string
+                    url:
+                      type: string
+                  required:
+                  - name
+              required:
+              - gym
+  "/gyms/{id}":
+    delete:
+      summary: ジムを削除
+      tags:
+      - Gyms
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: 削除成功
   "/machines":
     get:
       summary: 機械一覧を取得
