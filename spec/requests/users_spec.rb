@@ -1,7 +1,5 @@
-require 'swagger_helper'
-
 RSpec.describe 'Users API', type: :request do
-  path '/api/v1/users' do
+  path '/users' do
     get 'ユーザー一覧を取得' do
       tags 'Users'
       produces 'application/json'
@@ -46,7 +44,7 @@ RSpec.describe 'Users API', type: :request do
     end
   end
 
-  path '/api/v1/users/{id}' do
+  path '/users/{id}' do
     delete 'ユーザー削除' do
       tags 'Users'
       parameter name: :id, in: :path, type: :integer
