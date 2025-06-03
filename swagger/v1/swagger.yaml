@@ -4,6 +4,60 @@ info:
   title: API V1
   version: v1
 paths:
+  "/machines":
+    get:
+      summary: 機械一覧を取得
+      tags:
+      - Machines
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: 機械を登録
+      tags:
+      - Machines
+      parameters: []
+      responses:
+        '201':
+          description: created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                machine:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    model:
+                      type: string
+                  required:
+                  - name
+                  - model
+              required:
+              - machine
+  "/machines/{id}":
+    delete:
+      summary: 機械を削除
+      tags:
+      - Machines
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: deleted
   "/users":
     get:
       summary: ユーザー一覧を取得
@@ -11,7 +65,7 @@ paths:
       - Users
       responses:
         '200':
-          description: 成功
+          description: ok
           content:
             application/json:
               schema:
@@ -25,7 +79,7 @@ paths:
       parameters: []
       responses:
         '201':
-          description: 作成成功
+          description: ok
       requestBody:
         content:
           application/json:
@@ -60,7 +114,7 @@ paths:
           type: integer
       responses:
         '204':
-          description: 削除成功
+          description: ok
 servers:
 - url: http://localhost:3000/api/v1
   description: Local development server
