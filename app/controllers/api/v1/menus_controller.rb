@@ -18,7 +18,7 @@ module Api
       private
 
       def menu_params
-        params.require(:menu).permit(:name, :machine_id, :part, :count, :set_count, :time)
+        params.require(:menu).permit(:name, :machine_id, :part, :count, :set_count, :time, :weight)
       end
     end
   end
