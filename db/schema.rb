@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_03_002433) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_04_160408) do
   create_table "gym_machines", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "gym_id", null: false
     t.bigint "machine_id", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_03_002433) do
     t.integer "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "weight"
     t.index ["machine_id"], name: "index_menus_on_machine_id"
   end
 
