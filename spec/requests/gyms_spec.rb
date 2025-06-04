@@ -6,7 +6,7 @@ RSpec.describe 'Gyms API', type: :request do
       tags 'Gyms'
       produces 'application/json'
 
-      response '200', '成功' do
+      response '200', 'ok' do
         schema type: :array, items: { type: :object }
         run_test!
       end
@@ -31,13 +31,13 @@ RSpec.describe 'Gyms API', type: :request do
         required: [ 'gym' ]
       }
 
-      response '201', '作成成功' do
+      response '201', 'ok' do
         let(:gym) do
           {
             gym: {
-              name: 'ゴールドジム',
-              location: '渋谷',
-              url: 'https://goldsgym.example.com'
+              name: 'example gym',
+              location: 'tokyo',
+              url: 'https://examplegym.com'
             }
           }
         end
@@ -51,8 +51,8 @@ RSpec.describe 'Gyms API', type: :request do
       tags 'Gyms'
       parameter name: :id, in: :path, type: :integer
 
-      response '204', '削除成功' do
-        let(:id) { Gym.create(name: 'エニタイム', location: '梅田').id }
+      response '204', 'ok' do
+        let(:id) { Gym.create(name: 'example gym', location: 'tokyo').id }
         run_test!
       end
     end
