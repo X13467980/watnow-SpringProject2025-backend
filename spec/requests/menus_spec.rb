@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'Menus API', type: :request do
-  path 'menus' do
+  path '/menus' do
 
     get 'メニュー一覧を取得' do
       tags 'Menus'

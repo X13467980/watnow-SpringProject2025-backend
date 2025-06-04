@@ -113,7 +113,7 @@ paths:
       responses:
         '204':
           description: deleted
-  menus:
+  "/menus":
     get:
       summary: メニュー一覧を取得
       tags:
