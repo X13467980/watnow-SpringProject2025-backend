@@ -15,6 +15,38 @@ module Api
         render json: menus.as_json(include: { machine: { only: [ :id, :name ] } })
       end
 
+      def destroy
+        menu = Menu.find_by(id: params[:id])
+        if menu
+          menu.destroy
+          render json: { message: "メニューを削除しました" }, status: :ok
+        else
+          render json: { error: "メニューが見つかりません" }, status: :not_found
+        end
+      end
+
+      def update
+        menu = Menu.find_by(id: params[:id])
+        if menu
+          if menu.update(menu_params)
+            render json: { message: "メニューの更新に成功しました", menu: menu }, status: :ok
+          else
+            render json: { errors: menu.errors.full_messages }, status: :unprocessable_entity
+          end
+        else
+          render json: { error: "メニューが見つかりません" }, status: :not_found
+        end
+      end
+
+      def show
+        menu = Menu.find_by(id: params[:id])
+        if menu
+          render json: menu.as_json(include: { machine: { only: [ :id, :name ] } })
+        else
+          render json: { error: "メニューが見つかりません" }, status: :not_found
+        end
+      end
+
       private
 
       def menu_params
