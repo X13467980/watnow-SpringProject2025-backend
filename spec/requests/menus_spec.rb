@@ -2,7 +2,6 @@ require 'swagger_helper'
 
 RSpec.describe 'Menus API', type: :request do
   path '/menus' do
-
     get 'メニュー一覧を取得' do
       tags 'Menus'
       produces 'application/json'
@@ -30,14 +29,14 @@ RSpec.describe 'Menus API', type: :request do
               time: { type: :integer },
               weight: { type: :number }
             },
-            required: ['name', 'machine_id', 'part']
+            required: [ 'name', 'machine_id', 'part' ]
           }
         },
-        required: ['menu']
+        required: [ 'menu' ]
       }
 
       response '201', 'ok' do
-        let(:menu) {{
+        let(:menu) { {
           menu: {
             name: 'レッグプレス',
             machine_id: 1,
@@ -90,7 +89,7 @@ RSpec.describe 'Menus API', type: :request do
 
       response '200', 'ok' do
         let(:id) { Menu.create(name: 'レッグプレス', machine_id: 1, part: '脚').id }
-        let(:menu) {{ menu: { name: 'レッグプレス改', weight: 60.0 } }}
+        let(:menu) { { menu: { name: 'レッグプレス改', weight: 60.0 } } }
         run_test!
       end
     end
