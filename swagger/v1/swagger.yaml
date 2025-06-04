@@ -11,7 +11,7 @@ paths:
       - Gyms
       responses:
         '200':
-          description: 成功
+          description: ok
           content:
             application/json:
               schema:
@@ -25,7 +25,7 @@ paths:
       parameters: []
       responses:
         '201':
-          description: 作成成功
+          description: ok
       requestBody:
         content:
           application/json:
@@ -58,7 +58,7 @@ paths:
           type: integer
       responses:
         '204':
-          description: 削除成功
+          description: ok
   "/machines":
     get:
       summary: 機械一覧を取得
@@ -113,6 +113,105 @@ paths:
       responses:
         '204':
           description: deleted
+  menus:
+    get:
+      summary: メニュー一覧を取得
+      tags:
+      - Menus
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      summary: メニューを作成
+      tags:
+      - Menus
+      parameters: []
+      responses:
+        '201':
+          description: ok
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                menu:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    machine_id:
+                      type: integer
+                    part:
+                      type: string
+                    count:
+                      type: integer
+                    set_count:
+                      type: integer
+                    time:
+                      type: integer
+                    weight:
+                      type: number
+                  required:
+                  - name
+                  - machine_id
+                  - part
+              required:
+              - menu
+  "/menus/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: 特定のメニューを取得
+      tags:
+      - Menus
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: not found
+    put:
+      summary: メニューを更新
+      tags:
+      - Menus
+      parameters: []
+      responses:
+        '200':
+          description: ok
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                menu:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    weight:
+                      type: number
+    delete:
+      summary: メニューを削除
+      tags:
+      - Menus
+      responses:
+        '204':
+          description: ok
   "/users":
     get:
       summary: ユーザー一覧を取得
