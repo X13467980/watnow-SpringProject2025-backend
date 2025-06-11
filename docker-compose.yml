@@ -17,14 +17,10 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:80"
+      - "3001:3000"
     env_file:
       - .env 
-    environment:
-      RAILS_ENV: development
-      DATABASE_HOST: db
-      DATABASE_USERNAME: root
-      DATABASE_PASSWORD: password
+  
     volumes:
       - .:/rails
       - bundle_data:/usr/local/bundle
