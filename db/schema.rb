@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_04_160408) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_11_181027) do
   create_table "gym_machines", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "gym_id", null: false
     t.bigint "machine_id", null: false
@@ -26,6 +26,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_04_160408) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "machine_menus", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "machine_id", null: false
+    t.bigint "menu_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["machine_id"], name: "index_machine_menus_on_machine_id"
+    t.index ["menu_id"], name: "index_machine_menus_on_menu_id"
   end
 
   create_table "machines", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -70,6 +79,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_04_160408) do
 
   add_foreign_key "gym_machines", "gyms"
   add_foreign_key "gym_machines", "machines"
+  add_foreign_key "machine_menus", "machines"
+  add_foreign_key "machine_menus", "menus"
   add_foreign_key "menus", "machines"
   add_foreign_key "users_trainings", "menus"
   add_foreign_key "users_trainings", "users"

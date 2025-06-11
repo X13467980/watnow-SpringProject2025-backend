@@ -1,3 +1,4 @@
 class Menu < ApplicationRecord
-  belongs_to :machine
+  has_many :machine_menus
+  has_many :machines, through: :machine_menus
 end
