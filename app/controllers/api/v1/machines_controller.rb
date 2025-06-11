@@ -13,9 +13,13 @@ module Api
         vision = Google::Cloud::Vision.image_annotator
         response = vision.label_detection(image: uploaded_file.tempfile.path)
         labels = response.responses.first.label_annotations.map(&:description)
+        Rails.logger.info "🔥 Vision labels: #{labels.inspect}"
 
         machine = Machine.all.find do |m|
-          labels.any? { |label| m.name.downcase.include?(label.downcase) }
+          labels.any? do |label|
+            m.name.downcase.include?(label.downcase) ||
+             (m.label && m.label.downcase.include?(label.downcase))
+          end
         end
 
         if machine
