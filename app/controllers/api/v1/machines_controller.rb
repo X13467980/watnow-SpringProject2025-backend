@@ -1,9 +1,40 @@
+require "google/cloud/vision"
+
 module Api
   module V1
     class MachinesController < ApplicationController
-      #   protect_from_forgery with: :null_session
+      # POST /api/v1/machines/identify
       def identify
-        render json: { message: "マシンの識別に成功しました！" }, status: :ok
+        uploaded_file = params[:image]
+        unless uploaded_file
+          return render json: { error: "画像が送信されていません" }, status: :bad_request
+        end
+
+        vision = Google::Cloud::Vision.image_annotator
+        response = vision.label_detection(image: uploaded_file.tempfile.path)
+        labels = response.responses.first.label_annotations.map(&:description)
+
+        machine = Machine.all.find do |m|
+          labels.any? { |label| m.name.downcase.include?(label.downcase) }
+        end
+
+        if machine
+          render json: {
+            machine_name: machine.name,
+            image_url: machine.image_url,
+            menus: machine.menus.map do |menu|
+              {
+                name: menu.name,
+                part: menu.part,
+                count: menu.count,
+                set_count: menu.set_count,
+                weight: menu.weight
+              }
+            end
+          }
+        else
+          render json: { error: "マシンが特定できませんでした。" }, status: :not_found
+        end
       end
 
       def create
@@ -18,7 +49,6 @@ module Api
       def index
         machines = Machine.all
         render json: machines
-        # 全マシン情報を取得
       end
 
       private
