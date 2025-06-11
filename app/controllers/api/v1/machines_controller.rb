@@ -5,7 +5,7 @@ module Api
       def identify
         render json: { message: "マシンの識別に成功しました！" }, status: :ok
       end
-      
+
       def create
         machine = Machine.new(machine_params)
         if machine.save
