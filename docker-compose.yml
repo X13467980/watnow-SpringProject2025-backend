@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3001:3000"
+      - "3000:3000"
     env_file:
       - .env 
   
@@ -26,7 +26,7 @@ services:
       - bundle_data:/usr/local/bundle
     depends_on:
       - db
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0 -p 80"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0 -p 3000"
 
 volumes:
   db_data:
