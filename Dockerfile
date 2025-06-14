@@ -8,30 +8,46 @@
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version
-ARG RUBY_VERSION=3.4.1
+ARG RUBY_VERSION=3.2.2
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
 WORKDIR /rails
+RUN gem uninstall -i $(ruby -e 'print Gem.default_dir') bundler -a -x \
+    && gem install bundler -v 2.6.2
 
+ENV BUNDLE_PATH=/usr/local/bundle \
+    GEM_HOME=/usr/local/bundle \
+    PATH=/usr/local/bundle/bin:$PATH
 # Install base packages
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl default-mysql-client libjemalloc2 libvips && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+
+
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential default-libmysqlclient-dev git libyaml-dev pkg-config && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install --no-install-recommends -y \
+    build-essential \
+    default-libmysqlclient-dev \
+    git \
+    libyaml-dev \
+    pkg-config \
+    libprotobuf-dev \
+    protobuf-compiler \
+    libgrpc++-dev \
+    libssl-dev \
+    cmake \
+    libgflags-dev \
+    libgtest-dev && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives
+
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -51,19 +67,22 @@ RUN bundle exec bootsnap precompile app/ lib/
 # Final stage for app image
 FROM base
 
+# Run and own only the runtime files as a non-root user for security
+RUN groupadd --system --gid 1000 rails && \
+    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash
+
 # Copy built artifacts: gems, application
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
+RUN chown -R rails:rails /usr/local/bundle /rails/db /rails/log /rails/storage /rails/tmp
+
 # Run and own only the runtime files as a non-root user for security
-RUN groupadd --system --gid 1000 rails && \
-    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
 USER 1000:1000
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
-EXPOSE 80
-CMD ["./bin/thrust", "./bin/rails", "server"]
+EXPOSE 3001
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]

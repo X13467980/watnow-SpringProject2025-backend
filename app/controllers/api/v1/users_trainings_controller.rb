@@ -21,7 +21,7 @@ module Api
       private
 
       def users_training_params
-        params.require(:users_training).permit(:user_id, :menu_id, :training_date)
+        params.require(:users_training).permit(:user_id, :menu_id, :training_date, :reps, :weight, :set_count, :memo)
       end
     end
   end
