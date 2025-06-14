@@ -56,3 +56,5 @@ group :development, :test do
   gem "rswag"
   gem "rspec-rails"
 end
+
+gem "ruby-lsp", "~> 0.24.1"
