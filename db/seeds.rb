@@ -19,7 +19,7 @@ MachineMenu.create!(machine: m1, menu: menu1)
 MachineMenu.create!(machine: m1, menu: menu2) # ラットプルダウンで胸トレもできると仮定
 
 User.create!(
-  id: 1,                        
+  id: 1,
   name: "テストユーザー",
   email: "test@example.com",
   password: "password"
