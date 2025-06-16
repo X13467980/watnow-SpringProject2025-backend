@@ -54,13 +54,8 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "dotenv-rails"
   gem "rswag"
-  gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
-  gem 'rubocop-performance', require: false
-  gem 'rubocop-rspec', require: false
-  gem 'rubocop-bundler', require: false
-  gem 'rubocop-gemspec', require: false
-  gem 'rubocop-security', require: false
+
 end
 
 gem "ruby-lsp", "~> 0.24.1"
