@@ -392,6 +392,9 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
+    rubocop-rspec (3.6.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
     ruby-graphviz (1.2.5)
       rexml
     ruby-lsp (0.24.1)
@@ -476,6 +479,7 @@ DEPENDENCIES
   rspec-rails
   rswag
   rubocop-rails-omakase
+  rubocop-rspec
   ruby-lsp (~> 0.24.1)
   solid_cable
   solid_cache
