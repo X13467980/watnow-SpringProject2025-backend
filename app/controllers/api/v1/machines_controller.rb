@@ -11,10 +11,17 @@ module Api
         end
 
         vision = Google::Cloud::Vision.image_annotator
-        response = vision.web_detection(image: uploaded_file.tempfile.path)
-        web_entities = response.responses.first.web_detection.web_entities
-        labels = web_entities.map(&:description).compact
-        Rails.logger.info "🔥 Web Detection labels: #{labels.inspect}"
+
+        # 両方のAPIを呼び出す
+        label_response = vision.label_detection(image: uploaded_file.tempfile.path)
+        web_response   = vision.web_detection(image: uploaded_file.tempfile.path)
+
+        label_labels = label_response.responses.first.label_annotations.map(&:description).compact
+        web_labels   = web_response.responses.first.web_detection.web_entities.map(&:description).compact
+
+        # 両方をマージし、重複排除
+        labels = (label_labels + web_labels).uniq
+        Rails.logger.info "🔥 Combined labels: #{labels.inspect}"
 
         # 複数マッチに変更
         matched_machines = Machine.all.select do |m|
