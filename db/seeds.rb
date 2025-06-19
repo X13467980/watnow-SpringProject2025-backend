@@ -9,8 +9,8 @@
 #   end
 
 # db/seeds.rb
-m1 = Machine.create!(name: "ラットプルダウン", label: "Weightlifting Machine, Gym, Back", image_url: "lat.jpg")
-m2 = Machine.create!(name: "チェストプレス", label: "Weightlifting Machine, Gym, Chest", image_url: "chest.jpg")
+m1 = Machine.create!(name: "ラットプルダウン", label: "Lat Pull Down, Pull-down", image_url: "lat.jpg")
+m2 = Machine.create!(name: "チェストプレス", label: "Chest Press", image_url: "chest.jpg")
 
 menu1 = Menu.create!(name: "背中トレ", part: "背中", count: 10, set_count: 3, weight: 40, machine_id: m1.id)
 menu2 = Menu.create!(name: "胸トレ", part: "胸", count: 12, set_count: 3, weight: 30, machine_id: m2.id)
