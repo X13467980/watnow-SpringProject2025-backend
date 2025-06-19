@@ -11,9 +11,10 @@ module Api
         end
 
         vision = Google::Cloud::Vision.image_annotator
-        response = vision.label_detection(image: uploaded_file.tempfile.path)
-        labels = response.responses.first.label_annotations.map(&:description)
-        Rails.logger.info "🔥 Vision labels: #{labels.inspect}"
+        response = vision.web_detection(image: uploaded_file.tempfile.path)
+        web_entities = response.responses.first.web_detection.web_entities
+        labels = web_entities.map(&:description).compact
+        Rails.logger.info "🔥 Web Detection labels: #{labels.inspect}"
 
         # 複数マッチに変更
         matched_machines = Machine.all.select do |m|
