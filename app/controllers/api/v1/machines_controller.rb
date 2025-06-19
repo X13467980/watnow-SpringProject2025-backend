@@ -5,7 +5,7 @@ module Api
     class MachinesController < ApplicationController
       # POST /api/v1/machines/identify
       def identify
-  uploaded_file = params[:image]
+      uploaded_file = params[:image]
   unless uploaded_file
     return render json: { error: "画像が送信されていません" }, status: :bad_request
   end
