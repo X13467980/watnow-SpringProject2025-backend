@@ -57,4 +57,4 @@ group :development, :test do
   gem "rubocop-rails", require: false
 end
 
-gem "ruby-lsp", "~> 0.24.1"
+gem "ruby-lsp", "~> 0.24.2"
