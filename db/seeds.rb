@@ -171,6 +171,10 @@ menu131 = Menu.create!(name: "バーベルサイドランジ", part: "脚（大�
 menu132 = Menu.create!(name: "ヒップスラスト", part: "尻（大臀筋）", machine_id: m12.id)
 menu133 = Menu.create!(name: "バーベルカーフレイズ", part: "脚（腓腹筋・ヒラメ筋）", machine_id: m12.id)
 
+# Menus related to Chest Press
+menu134 = Menu.create!(name: "チェストプレス", part: "胸（大胸筋）", machine_id: m13.id)
+
+
 
 MachineMenu.create!(machine: m1, menu: menu1)
 MachineMenu.create!(machine: m1, menu: menu2) 
@@ -316,3 +320,5 @@ MachineMenu.create!(machine: m12, menu: menu130)
 MachineMenu.create!(machine: m12, menu: menu131)
 MachineMenu.create!(machine: m12, menu: menu132)
 MachineMenu.create!(machine: m12, menu: menu133)  
+
+MachineMenu.create!(machine: m13, menu: menu134)
