@@ -1,13 +1,6 @@
-User.create!(
-  id: 1,
-  name: "テストユーザー",
-  email: "test@example.com",
-  password: "password"
-)
-
 m1 = Machine.create!(name: "インクラインベンチ", label: "Incline Bench, Adjustable Bench, Incline, Decline", image_url: "")
 m2 = Machine.create!(name: "ダンベル", label: "Rubber Dumbbell, Dumbbell, dumbbell", image_url: "")
-m3 = Machine.create!(name: "パワーラック", label: "Power Rack", image_url: "")
+m3 = Machine.create!(name: "パワーラック", label: "Power Rack, Shelf", image_url: "")
 m4 = Machine.create!(name: "プリーチャーカールベンチ", label: "Preacher Curl Bench", image_url: "")
 m5 = Machine.create!(name: "レッグプレス", label: "Leg Press", image_url: "")
 m6 = Machine.create!(name: "アップライトバイク", label: "Upright Bike", image_url: "")
@@ -21,6 +14,7 @@ m13 = Machine.create!(name: "チェストプレス", label: "Chest Press", image
 m14 = Machine.create!(name: "トレッドミル", label: "Treadmill", image_url: "")
 m15 = Machine.create!(name: "ペックデック", label: "Pec Deck", image_url: "")
 
+# Menus related to Incline Bench
 menu1 = Menu.create!(name: "ダンベルフライ", part: "胸（大胸筋）", machine_id: m1.id)
 menu2 = Menu.create!(name: "ダンベルプレス", part: "胸（大胸筋）", machine_id: m1.id)
 menu3 = Menu.create!(name: "ワンハンドローイング", part: "背中（広背筋・僧帽筋）", machine_id: m1.id)
@@ -37,6 +31,7 @@ menu13 = Menu.create!(name: "グルートブリッジ", part: "尻（大臀筋�
 menu14 = Menu.create!(name: "レッグレイズ", part: "腹筋（腹直筋）", machine_id: m1.id)
 menu15 = Menu.create!(name: "シットアップ", part: "腹筋（腹直筋）", machine_id: m1.id)
 
+# Menus related to Dumbbell
 menu16 = Menu.create!(name: "ダンベルベンチプレス", part: "胸（大胸筋）", machine_id: m2.id)
 menu17 = Menu.create!(name: "ダンベルフライ", part: "胸（大胸筋）", machine_id: m2.id)
 menu18 = Menu.create!(name: "ダンベルカール", part: "腕（上腕二頭筋）", machine_id: m2.id)
@@ -60,6 +55,15 @@ menu35 = Menu.create!(name: "ダンベルサイドランジ", part: "脚（ハ�
 menu36 = Menu.create!(name: "ダンベルカーフレイズ", part: "脚（腓腹筋・ヒラメ筋）", machine_id: m2.id)
 menu37 = Menu.create!(name: "ダンベルステーショナリーランジ", part: "脚（腓腹筋・ヒラメ筋・ハムストリングス）", machine_id: m2.id)
 
+# Menus related to Power Rack
+menu38 = Menu.create!(name: "ベンチプレス", part: "胸（大胸筋）", machine_id: m3.id)
+menu39 = Menu.create!(name: "インクラインベンチプレス", part: "胸（大胸筋）", machine_id: m3.id)
+menu40 = Menu.create!(name: "ショルダープレス", part: "肩（三角筋）", machine_id: m3.id)
+menu41 = Menu.create!(name: "ベントオーバーロウ", part: "背中（広背筋・僧帽筋）", machine_id: m3.id)
+menu42 = Menu.create!(name: "アップライトロウ", part: "肩（三角筋・僧帽筋）", machine_id: m3.id)
+menu43 = Menu.create!(name: "デッドリフト", part: "背中・脚・尻（広背筋・ハムストリングス・大臀筋）", machine_id: m3.id)
+menu44 = Menu.create!(name: "スクワット", part: "脚・尻（大腿四頭筋・ハムストリングス・大臀筋）", machine_id: m3.id)
+menu45 = Menu.create!(name: "チンニング", part: "背中・腕・胸（広背筋・上腕二頭筋・大胸筋）", machine_id: m3.id)
 
 MachineMenu.create!(machine: m1, menu: menu1)
 MachineMenu.create!(machine: m1, menu: menu2) 
@@ -99,3 +103,12 @@ MachineMenu.create!(machine: m2, menu: menu34)
 MachineMenu.create!(machine: m2, menu: menu35)
 MachineMenu.create!(machine: m2, menu: menu36)
 MachineMenu.create!(machine: m2, menu: menu37)
+
+MachineMenu.create!(machine: m3, menu: menu38)
+MachineMenu.create!(machine: m3, menu: menu39)
+MachineMenu.create!(machine: m3, menu: menu40)
+MachineMenu.create!(machine: m3, menu: menu41)
+MachineMenu.create!(machine: m3, menu: menu42)
+MachineMenu.create!(machine: m3, menu: menu43)
+MachineMenu.create!(machine: m3, menu: menu44)
+MachineMenu.create!(machine: m3, menu: menu45)
