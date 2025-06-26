@@ -14,7 +14,7 @@ m13 = Machine.create!(name: "チェストプレス", label: "Chest Press", image
 m14 = Machine.create!(name: "トレッドミル", label: "Treadmill", image_url: "")
 m15 = Machine.create!(name: "ペックデック", label: "Pec Deck", image_url: "")
 
-# Menus related to Incline Bench
+# Menus related to Incline Bench　
 menu1 = Menu.create!(name: "ダンベルフライ", part: "胸（大胸筋）", machine_id: m1.id)
 menu2 = Menu.create!(name: "ダンベルプレス", part: "胸（大胸筋）", machine_id: m1.id)
 menu3 = Menu.create!(name: "ワンハンドローイング", part: "背中（広背筋・僧帽筋）", machine_id: m1.id)
