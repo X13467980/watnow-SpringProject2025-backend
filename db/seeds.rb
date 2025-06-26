@@ -73,7 +73,7 @@ menu49 = Menu.create!(name: "ケーブルプリーチャーカール", part: "�
 menu50 = Menu.create!(name: "ワンハンドプリーチャーカール", part: "腕（上腕二頭筋）", machine_id: m4.id)
 
 # Menus related to Leg Press
-menu51 = Menu.create!(name: "レッグプレス", part: "脚・尻（大腿四頭筋・ハムストリングス・内転筋・大臀筋）", machine_id: m4.id)
+menu51 = Menu.create!(name: "レッグプレス", part: "脚・尻（大腿四頭筋・ハムストリングス・内転筋・大臀筋）", machine_id: m5.id)
 
 # Menus related to Upright Bike
 menu52 = Menu.create!(name: "ワークアウト", part: "有酸素運動・脚・尻（大腿四頭筋・ハムストリングス・大臀筋）", machine_id: m6.id)
@@ -117,6 +117,9 @@ menu85 = Menu.create!(name: "EZバーロールアウト", part: "腹筋（腹直
 menu86 = Menu.create!(name: "EZバーフロントスクワット", part: "脚（大腿四頭筋）", machine_id: m8.id)
 menu87 = Menu.create!(name: "EZバーランジ", part: "脚（大腿四頭筋・ハムストリングス）", machine_id: m8.id)
 menu88 = Menu.create!(name: "EZバーヒップスラスト", part: "尻（大臀筋）", machine_id: m8.id)
+
+# Menus related to Ab Coaster
+menu89 = Menu.create!(name: "アブコースター", part: "腹筋（腹直筋）", machine_id: m9.id)
 
 MachineMenu.create!(machine: m1, menu: menu1)
 MachineMenu.create!(machine: m1, menu: menu2) 
@@ -213,3 +216,5 @@ MachineMenu.create!(machine: m8, menu: menu85)
 MachineMenu.create!(machine: m8, menu: menu86)
 MachineMenu.create!(machine: m8, menu: menu87)
 MachineMenu.create!(machine: m8, menu: menu88)
+
+MachineMenu.create!(machine: m9, menu: menu89)
