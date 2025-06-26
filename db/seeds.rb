@@ -65,6 +65,14 @@ menu43 = Menu.create!(name: "デッドリフト", part: "背中・脚・尻（�
 menu44 = Menu.create!(name: "スクワット", part: "脚・尻（大腿四頭筋・ハムストリングス・大臀筋）", machine_id: m3.id)
 menu45 = Menu.create!(name: "チンニング", part: "背中・腕・胸（広背筋・上腕二頭筋・大胸筋）", machine_id: m3.id)
 
+# Menus related to Preacher Curl Bench
+menu46 = Menu.create!(name: "バーベルプリーチャーカール", part: "腕（上腕二頭筋）", machine_id: m4.id)
+menu47 = Menu.create!(name: "ダンベルプリーチャーカール", part: "腕（上腕二頭筋）", machine_id: m4.id)
+menu48 = Menu.create!(name: "EZバーカール", part: "腕（上腕二頭筋）", machine_id: m4.id)
+menu49 = Menu.create!(name: "ケーブルプリーチャーカール", part: "腕（上腕二頭筋）", machine_id: m4.id)
+menu50 = Menu.create!(name: "ワンハンドプリーチャーカール", part: "腕（上腕二頭筋）", machine_id: m4.id)
+
+
 MachineMenu.create!(machine: m1, menu: menu1)
 MachineMenu.create!(machine: m1, menu: menu2) 
 MachineMenu.create!(machine: m1, menu: menu3)
@@ -112,3 +120,9 @@ MachineMenu.create!(machine: m3, menu: menu42)
 MachineMenu.create!(machine: m3, menu: menu43)
 MachineMenu.create!(machine: m3, menu: menu44)
 MachineMenu.create!(machine: m3, menu: menu45)
+
+MachineMenu.create!(machine: m4, menu: menu46)
+MachineMenu.create!(machine: m4, menu: menu47)
+MachineMenu.create!(machine: m4, menu: menu48)
+MachineMenu.create!(machine: m4, menu: menu49)
+MachineMenu.create!(machine: m4, menu: menu50)
