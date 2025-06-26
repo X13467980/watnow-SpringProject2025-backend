@@ -1,21 +1,54 @@
-# db/seeds.rb
-m1 = Machine.create!(name: "ラットプルダウン", label: "Lat Pull Down, Pull-down", image_url: "lat.jpg")
-m2 = Machine.create!(name: "チェストプレス", label: "Chest Press", image_url: "chest.jpg")
-m3 = Machine.create!(name: "フラットベンチ＆ダンベル", label: "Flat Bench, Dumbbell, Free Weights, Bench Press", image_url: "bench.jpg")
-
-menu1 = Menu.create!(name: "背中トレ", part: "背中", machine_id: m1.id)
-menu2 = Menu.create!(name: "胸トレ", part: "胸", machine_id: m2.id)
-menu3 = Menu.create!(name: "ダンベルプレス", part: "胸", machine_id: m3.id)
-menu4 = Menu.create!(name: "サイドレイズ", part: "肩", machine_id: m3.id)
-
-MachineMenu.create!(machine: m1, menu: menu1)
-MachineMenu.create!(machine: m1, menu: menu2) # ラットプルダウンで胸トレもできると仮定
-MachineMenu.create!(machine: m3, menu: menu3)
-MachineMenu.create!(machine: m3, menu: menu4)
-
 User.create!(
   id: 1,
   name: "テストユーザー",
   email: "test@example.com",
   password: "password"
 )
+
+m1 = Machine.create!(name: "インクラインベンチ", label: "Incline Bench, Adjustable Bench, Incline, Decline", image_url: "")
+m2 = Machine.create!(name: "ラバーダンベル", label: "Rubber Dumbbell, Dumbbell, dumbbell", image_url: "")
+m3 = Machine.create!(name: "パワーラック", label: "Power Rack", image_url: "")
+m4 = Machine.create!(name: "プリーチャーカールベンチ", label: "Preacher Curl Bench", image_url: "")
+m5 = Machine.create!(name: "レッグプレス", label: "Leg Press", image_url: "")
+m6 = Machine.create!(name: "アップライトバイク", label: "Upright Bike", image_url: "")
+m7 = Machine.create!(name: "フラットベンチ", label: "Flat Bench", image_url: "")
+m8 = Machine.create!(name: "EZバー", label: "EZ Bar", image_url: "")
+m9 = Machine.create!(name: "アブコースター", label: "Ab Coaster", image_url: "")
+m10 = Machine.create!(name: "シットアップベンチ", label: "Sit Up Bench", image_url: "")
+m11 = Machine.create!(name: "アジャスタブルプーリー", label: "Adjustable Pulley", image_url: "")
+m12 = Machine.create!(name: "バーベル", label: "Barbell", image_url: "")
+m13 = Machine.create!(name: "チェストプレス", label: "Chest Press", image_url: "")
+m14 = Machine.create!(name: "トレッドミル", label: "Treadmill", image_url: "")
+m15 = Machine.create!(name: "ペックデック", label: "Pec Deck", image_url: "")
+
+menu1 = Menu.create!(name: "ダンベルフライ", part: "胸（大胸筋）", machine_id: m1.id)
+menu2 = Menu.create!(name: "ダンベルプレス", part: "胸（大胸筋）", machine_id: m1.id)
+menu3 = Menu.create!(name: "ワンハンドローイング", part: "背中（広背筋・僧帽筋）", machine_id: m1.id)
+menu4 = Menu.create!(name: "ダンベルショルダープレス", part: "肩（三角筋）", machine_id: m1.id)
+menu5 = Menu.create!(name: "シーテッドサイドレイズ", part: "肩（三角筋）", machine_id: m1.id)
+menu6 = Menu.create!(name: "インクラインダンベルカール", part: "腕（上腕二頭筋）", machine_id: m1.id)
+menu7 = Menu.create!(name: "オーバーヘッドダンベルエクステンション", part: "腕（上腕三頭筋）", machine_id: m1.id)
+menu8 = Menu.create!(name: "ベンチディップ", part: "腕（上腕三頭筋）", machine_id: m1.id)
+menu9 = Menu.create!(name: "ブルガリアンスクワット", part: "脚（大腿四頭筋・ハムストリングス）", machine_id: m1.id)
+menu10 = Menu.create!(name: "ライイングレッグカール", part: "脚（ハムストリングス）", machine_id: m1.id)
+menu11 = Menu.create!(name: "ステップアップ", part: "脚", machine_id: m1.id)
+menu12 = Menu.create!(name: "ヒップスラスト", part: "尻（大臀筋）", machine_id: m1.id)
+menu13 = Menu.create!(name: "グルートブリッジ", part: "尻（大臀筋）", machine_id: m1.id)
+menu14 = Menu.create!(name: "レッグレイズ", part: "腹筋（腹直筋）", machine_id: m1.id)
+menu15 = Menu.create!(name: "シットアップ", part: "腹筋（腹直筋）", machine_id: m1.id)
+
+MachineMenu.create!(machine: m1, menu: menu1)
+MachineMenu.create!(machine: m1, menu: menu2) # ラットプルダウンで胸トレもできると仮定
+MachineMenu.create!(machine: m1, menu: menu3)
+MachineMenu.create!(machine: m1, menu: menu4)
+MachineMenu.create!(machine: m1, menu: menu5)
+MachineMenu.create!(machine: m1, menu: menu6)
+MachineMenu.create!(machine: m1, menu: menu7)
+MachineMenu.create!(machine: m1, menu: menu8)
+MachineMenu.create!(machine: m1, menu: menu9)
+MachineMenu.create!(machine: m1, menu: menu10)
+MachineMenu.create!(machine: m1, menu: menu11)
+MachineMenu.create!(machine: m1, menu: menu12)
+MachineMenu.create!(machine: m1, menu: menu13)
+MachineMenu.create!(machine: m1, menu: menu14)
+MachineMenu.create!(machine: m1, menu: menu15)
