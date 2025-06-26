@@ -72,6 +72,8 @@ menu48 = Menu.create!(name: "EZバーカール", part: "腕（上腕二頭筋）
 menu49 = Menu.create!(name: "ケーブルプリーチャーカール", part: "腕（上腕二頭筋）", machine_id: m4.id)
 menu50 = Menu.create!(name: "ワンハンドプリーチャーカール", part: "腕（上腕二頭筋）", machine_id: m4.id)
 
+# Menus related to Leg Press
+menu51 = Menu.create!(name: "レッグプレス", part: "脚・尻（大腿四頭筋・ハムストリングス・内転筋・大臀筋）", machine_id: m4.id)
 
 MachineMenu.create!(machine: m1, menu: menu1)
 MachineMenu.create!(machine: m1, menu: menu2) 
@@ -126,3 +128,5 @@ MachineMenu.create!(machine: m4, menu: menu47)
 MachineMenu.create!(machine: m4, menu: menu48)
 MachineMenu.create!(machine: m4, menu: menu49)
 MachineMenu.create!(machine: m4, menu: menu50)
+
+MachineMenu.create!(machine: m5, menu: menu51)
