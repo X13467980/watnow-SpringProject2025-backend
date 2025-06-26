@@ -14,7 +14,7 @@ m13 = Machine.create!(name: "チェストプレス", label: "Chest Press", image
 m14 = Machine.create!(name: "トレッドミル", label: "Treadmill", image_url: "")
 m15 = Machine.create!(name: "ペックデック", label: "Pec Deck", image_url: "")
 
-# Menus related to Incline Bench　
+# Menus related to Incline Bench
 menu1 = Menu.create!(name: "ダンベルフライ", part: "胸（大胸筋）", machine_id: m1.id)
 menu2 = Menu.create!(name: "ダンベルプレス", part: "胸（大胸筋）", machine_id: m1.id)
 menu3 = Menu.create!(name: "ワンハンドローイング", part: "背中（広背筋・僧帽筋）", machine_id: m1.id)
@@ -90,7 +90,7 @@ menu60 = Menu.create!(name: "ブルガリアンスクワット", part: "脚（�
 menu61 = Menu.create!(name: "レッグレイズ", part: "腹筋（腹直筋）", machine_id: m7.id)
 menu62 = Menu.create!(name: "シットアップ", part: "腹筋（腹直筋）", machine_id: m7.id)
 
-# Menus related to EZ Bar　
+# Menus related to EZ Bar
 menu63 = Menu.create!(name: "EZバーカール", part: "腕（上腕二頭筋）", machine_id: m8.id)
 menu64 = Menu.create!(name: "ケーブルEZバーカール", part: "腕（上腕二頭筋）", machine_id: m8.id)
 menu65 = Menu.create!(name: "EZバーリバースカール", part: "腕（上腕二頭筋・前腕）", machine_id: m8.id)
@@ -181,7 +181,7 @@ menu135 = Menu.create!(name: "ワークアウト", part: "有酸素運動・脚�
 menu136 = Menu.create!(name: "ペックデックフライ", part: "胸（大胸筋）", machine_id: m15.id)
 
 MachineMenu.create!(machine: m1, menu: menu1)
-MachineMenu.create!(machine: m1, menu: menu2) 
+MachineMenu.create!(machine: m1, menu: menu2)
 MachineMenu.create!(machine: m1, menu: menu3)
 MachineMenu.create!(machine: m1, menu: menu4)
 MachineMenu.create!(machine: m1, menu: menu5)
@@ -323,7 +323,7 @@ MachineMenu.create!(machine: m12, menu: menu129)
 MachineMenu.create!(machine: m12, menu: menu130)
 MachineMenu.create!(machine: m12, menu: menu131)
 MachineMenu.create!(machine: m12, menu: menu132)
-MachineMenu.create!(machine: m12, menu: menu133)  
+MachineMenu.create!(machine: m12, menu: menu133)
 
 MachineMenu.create!(machine: m13, menu: menu134)
 
