@@ -90,7 +90,7 @@ menu60 = Menu.create!(name: "ブルガリアンスクワット", part: "脚（�
 menu61 = Menu.create!(name: "レッグレイズ", part: "腹筋（腹直筋）", machine_id: m7.id)
 menu62 = Menu.create!(name: "シットアップ", part: "腹筋（腹直筋）", machine_id: m7.id)
 
-# Menus related to EZ Bar
+# Menus related to EZ Bar　
 menu63 = Menu.create!(name: "EZバーカール", part: "腕（上腕二頭筋）", machine_id: m8.id)
 menu64 = Menu.create!(name: "ケーブルEZバーカール", part: "腕（上腕二頭筋）", machine_id: m8.id)
 menu65 = Menu.create!(name: "EZバーリバースカール", part: "腕（上腕二頭筋・前腕）", machine_id: m8.id)
