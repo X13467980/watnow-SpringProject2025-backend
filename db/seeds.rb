@@ -38,7 +38,7 @@ menu14 = Menu.create!(name: "レッグレイズ", part: "腹筋（腹直筋）",
 menu15 = Menu.create!(name: "シットアップ", part: "腹筋（腹直筋）", machine_id: m1.id)
 
 MachineMenu.create!(machine: m1, menu: menu1)
-MachineMenu.create!(machine: m1, menu: menu2) # ラットプルダウンで胸トレもできると仮定
+MachineMenu.create!(machine: m1, menu: menu2) 
 MachineMenu.create!(machine: m1, menu: menu3)
 MachineMenu.create!(machine: m1, menu: menu4)
 MachineMenu.create!(machine: m1, menu: menu5)
