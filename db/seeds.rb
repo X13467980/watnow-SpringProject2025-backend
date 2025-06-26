@@ -6,7 +6,7 @@ m5 = Machine.create!(name: "レッグプレス", label: "Leg Press", image_url: 
 m6 = Machine.create!(name: "アップライトバイク", label: "Treadmill", image_url: "")
 m7 = Machine.create!(name: "フラットベンチ", label: "Flat Bench", image_url: "")
 m8 = Machine.create!(name: "EZバー", label: "EZ Bar, Cylinder, Pipe", image_url: "")
-m9 = Machine.create!(name: "アブコースター", label: "Ab Coaster", image_url: "")
+m9 = Machine.create!(name: "アブコースター", label: "Ab Coaster, Balance", image_url: "")
 m10 = Machine.create!(name: "シットアップベンチ", label: "Sit Up Bench", image_url: "")
 m11 = Machine.create!(name: "アジャスタブルプーリー", label: "Adjustable Pulley", image_url: "")
 m12 = Machine.create!(name: "バーベル", label: "Barbell", image_url: "")
@@ -121,6 +121,13 @@ menu88 = Menu.create!(name: "EZバーヒップスラスト", part: "尻（大臀
 # Menus related to Ab Coaster
 menu89 = Menu.create!(name: "アブコースター", part: "腹筋（腹直筋）", machine_id: m9.id)
 
+# Menus related to Sit Up Bench
+menu90 = Menu.create!(name: "シットアップベンチツイスト", part: "腹筋（腹斜筋）", machine_id: m10.id)
+menu91 = Menu.create!(name: "デクラインシットアップ", part: "腹筋（腹直筋）", machine_id: m10.id)
+menu92 = Menu.create!(name: "レッグレイズ", part: "腹筋（腹直筋下部）", machine_id: m10.id)
+menu93 = Menu.create!(name: "デクライン・ロシアンツイスト", part: "腹筋（腹斜筋）", machine_id: m10.id)
+menu94 = Menu.create!(name: "ドラゴンフラッグ", part: "腹筋（腹斜筋）", machine_id: m10.id)
+
 MachineMenu.create!(machine: m1, menu: menu1)
 MachineMenu.create!(machine: m1, menu: menu2) 
 MachineMenu.create!(machine: m1, menu: menu3)
@@ -218,3 +225,9 @@ MachineMenu.create!(machine: m8, menu: menu87)
 MachineMenu.create!(machine: m8, menu: menu88)
 
 MachineMenu.create!(machine: m9, menu: menu89)
+
+MachineMenu.create!(machine: m10, menu: menu90)
+MachineMenu.create!(machine: m10, menu: menu91)
+MachineMenu.create!(machine: m10, menu: menu92)
+MachineMenu.create!(machine: m10, menu: menu93)
+MachineMenu.create!(machine: m10, menu: menu94)
