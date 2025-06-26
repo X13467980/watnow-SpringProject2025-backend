@@ -177,6 +177,8 @@ menu134 = Menu.create!(name: "チェストプレス", part: "胸（大胸筋）"
 # Menus related to Treadmill
 menu135 = Menu.create!(name: "ワークアウト", part: "有酸素運動・脚・尻（大腿四頭筋・ハムストリングス・大臀筋）", machine_id: m14.id)
 
+# Menus related to Pec Deck
+menu136 = Menu.create!(name: "ペックデックフライ", part: "胸（大胸筋）", machine_id: m15.id)
 
 MachineMenu.create!(machine: m1, menu: menu1)
 MachineMenu.create!(machine: m1, menu: menu2) 
@@ -326,3 +328,5 @@ MachineMenu.create!(machine: m12, menu: menu133)
 MachineMenu.create!(machine: m13, menu: menu134)
 
 MachineMenu.create!(machine: m14, menu: menu135)
+
+MachineMenu.create!(machine: m15, menu: menu136)
