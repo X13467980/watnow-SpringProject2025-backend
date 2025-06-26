@@ -3,7 +3,7 @@ m2 = Machine.create!(name: "ダンベル", label: "Rubber Dumbbell, Dumbbell, du
 m3 = Machine.create!(name: "パワーラック", label: "Power Rack, Shelf", image_url: "")
 m4 = Machine.create!(name: "プリーチャーカールベンチ", label: "Preacher Curl Bench", image_url: "")
 m5 = Machine.create!(name: "レッグプレス", label: "Leg Press", image_url: "")
-m6 = Machine.create!(name: "アップライトバイク", label: "Upright Bike", image_url: "")
+m6 = Machine.create!(name: "アップライトバイク", label: "Treadmill", image_url: "")
 m7 = Machine.create!(name: "フラットベンチ", label: "Flat Bench", image_url: "")
 m8 = Machine.create!(name: "EZバー", label: "EZ Bar", image_url: "")
 m9 = Machine.create!(name: "アブコースター", label: "Ab Coaster", image_url: "")
@@ -75,6 +75,9 @@ menu50 = Menu.create!(name: "ワンハンドプリーチャーカール", part: 
 # Menus related to Leg Press
 menu51 = Menu.create!(name: "レッグプレス", part: "脚・尻（大腿四頭筋・ハムストリングス・内転筋・大臀筋）", machine_id: m4.id)
 
+# Menus related to Upright Bike
+menu52 = Menu.create!(name: "ワークアウト", part: "有酸素運動・脚・尻（大腿四頭筋・ハムストリングス・大臀筋）", machine_id: m6.id)
+
 MachineMenu.create!(machine: m1, menu: menu1)
 MachineMenu.create!(machine: m1, menu: menu2) 
 MachineMenu.create!(machine: m1, menu: menu3)
@@ -130,3 +133,5 @@ MachineMenu.create!(machine: m4, menu: menu49)
 MachineMenu.create!(machine: m4, menu: menu50)
 
 MachineMenu.create!(machine: m5, menu: menu51)
+
+MachineMenu.create!(machine: m6, menu: menu52)
