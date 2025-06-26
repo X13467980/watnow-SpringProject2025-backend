@@ -78,6 +78,18 @@ menu51 = Menu.create!(name: "レッグプレス", part: "脚・尻（大腿四�
 # Menus related to Upright Bike
 menu52 = Menu.create!(name: "ワークアウト", part: "有酸素運動・脚・尻（大腿四頭筋・ハムストリングス・大臀筋）", machine_id: m6.id)
 
+# Menus related to Flat Bench
+menu53 = Menu.create!(name: "ダンベルプレス", part: "胸・肩・腕（大胸筋・三角筋・上腕三頭筋）", machine_id: m7.id)
+menu54 = Menu.create!(name: "ダンベルフライ", part: "胸（大胸筋）", machine_id: m7.id)
+menu55 = Menu.create!(name: "ダンベルショルダープレス", part: "肩・腕（三角筋・上腕三頭筋）", machine_id: m7.id)
+menu56 = Menu.create!(name: "ダンベルワンハンドローイング", part: "背中（広背筋・僧帽筋）", machine_id: m7.id)
+menu57 = Menu.create!(name: "チェストサポーテッドダンベルロウ", part: "背中（広背筋・僧帽筋）", machine_id: m7.id)
+menu58 = Menu.create!(name: "リバースプッシュアップ", part: "腕・肩（上腕三頭筋・三角筋）", machine_id: m7.id)
+menu59 = Menu.create!(name: "インクラインダンベルカール", part: "腕（上腕二頭筋）", machine_id: m7.id)
+menu60 = Menu.create!(name: "ブルガリアンスクワット", part: "脚（大腿四頭筋・ハムストリングス）", machine_id: m7.id)
+menu61 = Menu.create!(name: "レッグレイズ", part: "腹筋（腹直筋）", machine_id: m7.id)
+menu62 = Menu.create!(name: "シットアップ", part: "腹筋（腹直筋）", machine_id: m7.id)
+
 MachineMenu.create!(machine: m1, menu: menu1)
 MachineMenu.create!(machine: m1, menu: menu2) 
 MachineMenu.create!(machine: m1, menu: menu3)
@@ -135,3 +147,14 @@ MachineMenu.create!(machine: m4, menu: menu50)
 MachineMenu.create!(machine: m5, menu: menu51)
 
 MachineMenu.create!(machine: m6, menu: menu52)
+
+MachineMenu.create!(machine: m7, menu: menu53)
+MachineMenu.create!(machine: m7, menu: menu54)
+MachineMenu.create!(machine: m7, menu: menu55)
+MachineMenu.create!(machine: m7, menu: menu56)
+MachineMenu.create!(machine: m7, menu: menu57)
+MachineMenu.create!(machine: m7, menu: menu58)
+MachineMenu.create!(machine: m7, menu: menu59)
+MachineMenu.create!(machine: m7, menu: menu60)
+MachineMenu.create!(machine: m7, menu: menu61)
+MachineMenu.create!(machine: m7, menu: menu62)
