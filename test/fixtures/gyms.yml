@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  location: MyString
-  url: MyString
+  name: "フィットネスジム A"
+  location: "東京都渋谷区"
+  url: "https://gym-a.com"
 
 two:
-  name: MyString
-  location: MyString
-  url: MyString
+  name: "スポーツクラブ B"
+  location: "東京都新宿区"
+  url: "https://sports-b.com"

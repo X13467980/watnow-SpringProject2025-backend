@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  gym: one
-  machine: one
+  gym_id: 1
+  machine_id: 1
 
 two:
-  gym: two
-  machine: two
+  gym_id: 2
+  machine_id: 2
