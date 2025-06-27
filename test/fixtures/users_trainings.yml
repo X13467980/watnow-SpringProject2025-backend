@@ -1,11 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
-  menu: one
+  user_id: 1
+  menu_id: 1
   training_date: 2025-06-03 09:24:33
+  weight: 60.0
+  reps: 10
+  set_count: 3
+  memo: "テストトレーニング1"
 
 two:
-  user: two
-  menu: two
+  user_id: 2
+  menu_id: 2
   training_date: 2025-06-03 09:24:33
+  weight: 80.0
+  reps: 15
+  set_count: 3
+  memo: "テストトレーニング2"

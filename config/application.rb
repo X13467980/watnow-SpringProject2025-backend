@@ -13,7 +13,7 @@ module WatnowSpringProject2025Backend
 
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore, {
-      key: '_watnow_session',
+      key: "_watnow_session",
       secure: Rails.env.production?,
       httponly: true,
       same_site: :lax

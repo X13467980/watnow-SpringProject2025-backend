@@ -1,17 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  machine: one
-  part: MyString
-  count: 1
-  set_count: 1
-  time: 1
+  name: "ベンチプレス"
+  machine_id: 1
+  part: "胸"
+  count: 10
+  set_count: 3
+  time: 30
+  weight: 60.0
 
 two:
-  name: MyString
-  machine: two
-  part: MyString
-  count: 1
-  set_count: 1
-  time: 1
+  name: "スクワット"
+  machine_id: 2
+  part: "脚"
+  count: 15
+  set_count: 3
+  time: 45
+  weight: 80.0

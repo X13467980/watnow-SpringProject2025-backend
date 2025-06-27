@@ -3,7 +3,7 @@ module Api
     class SessionsController < ApplicationController
       def create
         puts "Login attempt for email: #{params[:email]}" # デバッグ用ログ
-        puts "Request headers: #{request.headers.to_h.select { |k,v| k.match(/cookie|session/i) }}" # デバッグ用ログ
+        puts "Request headers: #{request.headers.to_h.select { |k, v| k.match(/cookie|session/i) }}" # デバッグ用ログ
         user = User.find_by(email: params[:email])
         if user&.authenticate(params[:password])
           session[:user_id] = user.id  # セッションにuser_idを保存

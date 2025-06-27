@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resource :sessions, only: [:create, :destroy] do
+      resource :sessions, only: [ :create, :destroy ] do
         get :current, on: :collection
       end
 
