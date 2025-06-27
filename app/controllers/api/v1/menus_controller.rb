@@ -4,7 +4,7 @@ module Api
       def create
         menu = Menu.new(menu_params)
         if menu.save
-          render json: { message: "メニューの作成に成功しました", menu: menu }, status: :created
+          render json: { message: "記録に成功しました", menu: menu }, status: :created
         else
           render json: { errors: menu.errors.full_messages }, status: :unprocessable_entity
         end
@@ -19,9 +19,9 @@ module Api
         menu = Menu.find_by(id: params[:id])
         if menu
           menu.destroy
-          render json: { message: "メニューを削除しました" }, status: :ok
+          render json: { message: "記録を削除しました" }, status: :ok
         else
-          render json: { error: "メニューが見つかりません" }, status: :not_found
+          render json: { error: "記録が見つかりません" }, status: :not_found
         end
       end
 
@@ -29,12 +29,12 @@ module Api
         menu = Menu.find_by(id: params[:id])
         if menu
           if menu.update(menu_params)
-            render json: { message: "メニューの更新に成功しました", menu: menu }, status: :ok
+            render json: { message: "記録の更新に成功しました", menu: menu }, status: :ok
           else
             render json: { errors: menu.errors.full_messages }, status: :unprocessable_entity
           end
         else
-          render json: { error: "メニューが見つかりません" }, status: :not_found
+          render json: { error: "記録が見つかりません" }, status: :not_found
         end
       end
 
@@ -43,7 +43,7 @@ module Api
         if menu
           render json: menu.as_json(include: { machine: { only: [ :id, :name ] } })
         else
-          render json: { error: "メニューが見つかりません" }, status: :not_found
+          render json: { error: "記録が見つかりません" }, status: :not_found
         end
       end
 
