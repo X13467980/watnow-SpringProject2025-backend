@@ -11,30 +11,41 @@ module Api
         end
 
         vision = Google::Cloud::Vision.image_annotator
-        response = vision.label_detection(image: uploaded_file.tempfile.path)
-        labels = response.responses.first.label_annotations.map(&:description)
-        Rails.logger.info "🔥 Vision labels: #{labels.inspect}"
 
-        machine = Machine.all.find do |m|
+        # 両方のAPIを呼び出す
+        label_response = vision.label_detection(image: uploaded_file.tempfile.path)
+        web_response   = vision.web_detection(image: uploaded_file.tempfile.path)
+
+        label_labels = label_response.responses.first.label_annotations.map(&:description).compact
+        web_labels   = web_response.responses.first.web_detection.web_entities.map(&:description).compact
+
+        # 両方をマージし、重複排除
+        labels = (label_labels + web_labels).uniq
+        Rails.logger.info "🔥 Combined labels: #{labels.inspect}"
+
+        # 複数マッチに変更
+        matched_machines = Machine.all.select do |m|
           labels.any? do |label|
             m.name.downcase.include?(label.downcase) ||
-             (m.label && m.label.downcase.include?(label.downcase))
+              (m.label && m.label.downcase.include?(label.downcase))
           end
         end
 
-        if machine
-          render json: {
-            machine_name: machine.name,
-            image_url: machine.image_url,
-            menus: machine.menus.map do |menu|
-              {
-                name: menu.name,
-                part: menu.part,
-                count: menu.count,
-                set_count: menu.set_count,
-                weight: menu.weight
-              }
-            end
+        if matched_machines.present?
+          render json: matched_machines.map { |machine|
+            {
+              machine_name: machine.name,
+              image_url: machine.image_url,
+              menus: machine.menus.map do |menu|
+                {
+                  name: menu.name,
+                  part: menu.part,
+                  count: menu.count,
+                  set_count: menu.set_count,
+                  weight: menu.weight
+                }
+              end
+            }
           }
         else
           render json: { error: "マシンが特定できませんでした。" }, status: :not_found
