@@ -15,6 +15,19 @@ module Api
         reset_session
         render json: { message: "ログアウト成功" }, status: :ok
       end
+
+      def current
+        if session[:user_id]
+          user = User.find_by(id: session[:user_id])
+          if user
+            render json: { user: user }, status: :ok
+          else
+            render json: { error: "ユーザーが見つかりません" }, status: :not_found
+          end
+        else
+          render json: { user: nil }, status: :ok
+        end
+      end
     end
   end
 end

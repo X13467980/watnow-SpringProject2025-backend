@@ -41,7 +41,7 @@ module Api
       def show
         menu = Menu.find_by(id: params[:id])
         if menu
-          render json: menu.as_json(include: { machine: { only: [ :id, :name ] } })
+          render json: menu
         else
           render json: { error: "記録が見つかりません" }, status: :not_found
         end
