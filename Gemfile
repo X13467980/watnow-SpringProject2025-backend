@@ -56,5 +56,5 @@ group :development, :test do
   gem "rswag"
   gem "rubocop-rails", require: false
 end
-
+gem "rswag"
 gem "ruby-lsp", "~> 0.24.1"
