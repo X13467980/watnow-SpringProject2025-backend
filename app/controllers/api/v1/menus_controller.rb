@@ -42,6 +42,17 @@ module Api
         end
       end
 
+      def grouped_by_part
+        grouped = Menu.all.group_by(&:part)
+        result = grouped.map do |part, menus|
+          {
+            name: part,
+            exercises: menus.map(&:name).uniq
+          }
+        end
+        render json: result
+      end
+
       private
 
       def menu_params
