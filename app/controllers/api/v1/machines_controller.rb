@@ -38,6 +38,7 @@ module Api
               image_url: machine.image_url,
               menus: machine.menus.map do |menu|
                 {
+                  id: menu.id,
                   name: menu.name,
                   part: menu.part,
                   count: menu.count,
