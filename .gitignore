@@ -32,3 +32,6 @@
 /config/master.key
 
 config/credentials/*.json
+
+# local cookies session file
+cookies.txt
