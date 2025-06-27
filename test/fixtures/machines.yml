@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  image_url: MyString
+  name: "ベンチプレスマシン"
+  image_url: "https://example.com/bench_press.jpg"
+  label: "BP001"
+  machineid: 1
 
 two:
-  name: MyString
-  image_url: MyString
+  name: "スクワットマシン"
+  image_url: "https://example.com/squat.jpg"
+  label: "SQ001"
+  machineid: 2

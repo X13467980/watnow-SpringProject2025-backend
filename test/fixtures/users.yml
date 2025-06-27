@@ -1,11 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  email: MyString
-  password_digest: MyString
+  name: "テストユーザー1"
+  email: "test1@example.com"
+  password_digest: "$2a$12$kfgTHBMtICZ6xBm4gOBK7OcBv016UUw40OJU5hKbPK1f9.bSDpQLO"  # password123
+  height: 170.0
+  weight: 65.0
 
 two:
-  name: MyString
-  email: MyString
-  password_digest: MyString
+  name: "テストユーザー2"
+  email: "test2@example.com"
+  password_digest: "$2a$12$kfgTHBMtICZ6xBm4gOBK7OcBv016UUw40OJU5hKbPK1f9.bSDpQLO"  # password123
+  height: 175.0
+  weight: 70.0
