@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       resources :machines, only: [ :index, :create, :new ]
       resources :gyms, only: [ :create, :index ]
       resources :gym_machines, only: [ :create, :index ]
-      resources :menus, only: [ :create, :index, :show, :update, :destroy ]
+      resources :menus, only: [ :create, :index, :show, :update, :destroy ] do
        collection do
         get :grouped_by_part
       end
