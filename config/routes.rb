@@ -27,6 +27,7 @@ Rails.application.routes.draw do
        collection do
         get :grouped_by_part
       end
+      end
       resources :users_trainings, only: [ :create, :index ]
     end
   end
