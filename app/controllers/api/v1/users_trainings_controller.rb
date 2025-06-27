@@ -1,13 +1,19 @@
 module Api
   module V1
     class UsersTrainingsController < ApplicationController
+      before_action :require_login, only: [:create, :update, :destroy]
+      
       def create
+        puts "=== UsersTraining Create Debug ==="
         puts "セッションのuser_id: #{session[:user_id]}"  # デバッグ用ログ
-        unless session[:user_id]
-          render json: { error: "ログインしてください#{@user_id}" }, status: :unauthorized and return
-        end
+        puts "Current user: #{current_user&.id}"  # デバッグ用ログ
+        puts "Request origin: #{request.headers['Origin']}"  # デバッグ用ログ
+        puts "Request cookies: #{request.cookies}"  # デバッグ用ログ
+        puts "Request user agent: #{request.headers['User-Agent']}"  # デバッグ用ログ
+        puts "=================================="
+        
         users_training = UsersTraining.new(users_training_params)
-        users_training.user_id = session[:user_id]  # セッションからセット
+        users_training.user_id = current_user.id
         if users_training.save
           render json: { message: "記録に成功しました", users_training: users_training }, status: :created
         else
@@ -16,13 +22,25 @@ module Api
       end
 
       def index
-        users_trainings = UsersTraining.includes(:user, :menu)
-        render json: users_trainings.as_json(
-          include: {
-             user: { only: [:id, :name] },
-            menu: { only: [:id, :name, :part] }
-          }
-        )
+        # ログインユーザーの記録のみ表示（セキュリティ向上）
+        if current_user
+          users_trainings = current_user.users_trainings.includes(:user, :menu)
+          render json: users_trainings.as_json(
+            include: {
+              user: { only: [:id, :name] },
+              menu: { only: [:id, :name, :part] }
+            }
+          )
+        else
+          # ログインしていない場合は全体を表示（または要認證にする）
+          users_trainings = UsersTraining.includes(:user, :menu)
+          render json: users_trainings.as_json(
+            include: {
+              user: { only: [:id, :name] },
+              menu: { only: [:id, :name, :part] }
+            }
+          )
+        end
       end
 
       def show
@@ -42,8 +60,13 @@ module Api
       def update
         users_training = UsersTraining.find_by(id: params[:id])
         if users_training
-          # セッションのuser_idで上書き（不正なuser_id更新防止）
-          if users_training.update(users_training_params.merge(user_id: session[:user_id]))
+          # 自分の記録のみ更新可能
+          if users_training.user_id != current_user.id
+            render json: { error: "この記録を更新する権限がありません" }, status: :forbidden
+            return
+          end
+          
+          if users_training.update(users_training_params.merge(user_id: current_user.id))
             render json: { message: "記録の更新に成功しました", users_training: users_training }, status: :ok
           else
             render json: { errors: users_training.errors.full_messages }, status: :unprocessable_entity
@@ -56,6 +79,12 @@ module Api
       def destroy
         users_training = UsersTraining.find_by(id: params[:id])
         if users_training
+          # 自分の記録のみ削除可能
+          if users_training.user_id != current_user.id
+            render json: { error: "この記録を削除する権限がありません" }, status: :forbidden
+            return
+          end
+          
           users_training.destroy
           render json: { message: "記録を削除しました" }, status: :ok
         else
