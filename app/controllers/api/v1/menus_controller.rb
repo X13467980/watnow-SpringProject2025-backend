@@ -1,41 +1,9 @@
 module Api
   module V1
     class MenusController < ApplicationController
-      def create
-        menu = Menu.new(menu_params)
-        if menu.save
-          render json: { message: "記録に成功しました", menu: menu }, status: :created
-        else
-          render json: { errors: menu.errors.full_messages }, status: :unprocessable_entity
-        end
-      end
-
       def index
-        menus = Menu.includes(:machine)
-        render json: menus.as_json(include: { machine: { only: [ :id, :name ] } })
-      end
-
-      def destroy
-        menu = Menu.find_by(id: params[:id])
-        if menu
-          menu.destroy
-          render json: { message: "記録を削除しました" }, status: :ok
-        else
-          render json: { error: "記録が見つかりません" }, status: :not_found
-        end
-      end
-
-      def update
-        menu = Menu.find_by(id: params[:id])
-        if menu
-          if menu.update(menu_params)
-            render json: { message: "記録の更新に成功しました", menu: menu }, status: :ok
-          else
-            render json: { errors: menu.errors.full_messages }, status: :unprocessable_entity
-          end
-        else
-          render json: { error: "記録が見つかりません" }, status: :not_found
-        end
+        menus = Menu.all
+        render json: menus
       end
 
       def show
@@ -43,14 +11,41 @@ module Api
         if menu
           render json: menu
         else
-          render json: { error: "記録が見つかりません" }, status: :not_found
+          render json: { error: "メニューが見つかりません" }, status: :not_found
+        end
+      end
+
+      def create
+        menu = Menu.new(menu_params)
+        if menu.save
+          render json: { message: "メニュー作成に成功しました", menu: menu }, status: :created
+        else
+          render json: { errors: menu.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
+      def update
+        menu = Menu.find_by(id: params[:id])
+        if menu&.update(menu_params)
+          render json: { message: "メニュー更新に成功しました", menu: menu }, status: :ok
+        else
+          render json: { error: "メニューが見つかりません or 更新失敗", errors: menu&.errors&.full_messages }, status: :unprocessable_entity
+        end
+      end
+
+      def destroy
+        menu = Menu.find_by(id: params[:id])
+        if menu&.destroy
+          render json: { message: "メニュー削除に成功しました" }, status: :ok
+        else
+          render json: { error: "メニューが見つかりません or 削除失敗" }, status: :not_found
         end
       end
 
       private
 
       def menu_params
-        params.require(:menu).permit(:name, :machine_id, :part, :count, :set_count, :time, :weight)
+        params.require(:menu).permit(:name, :part)
       end
     end
   end

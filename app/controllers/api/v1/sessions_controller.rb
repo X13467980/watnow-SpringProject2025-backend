@@ -4,10 +4,10 @@ module Api
       def create
         user = User.find_by(email: params[:email])
         if user&.authenticate(params[:password])
-          session[:user_id] = user.id
+          @user_id = user.id
           render json: { message: "ログイン成功", user: user }, status: :ok
         else
-          render json: { error: "メールアドレスまたはパスワードが間違っています" }, status: :unauthorized
+           render json: { error: "メールアドレスまたはパスワードが間違っています" }, status: :unauthorized
         end
       end
 

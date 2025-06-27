@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resources :gyms, only: [ :create, :index ]
       resources :gym_machines, only: [ :create, :index ]
       resources :menus, only: [ :create, :index, :show, :update, :destroy ]
-      resources :users_trainings, only: [ :create, :index ]
+      resources :users_trainings, only: [ :create, :index, :show, :update, :destroy ]
     end
   end
 end
